@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="">
+      <label for="Email">Email:</label>
+      <input
+        type="text"
+        name="Email"
+        placeholder="Enter Your username"
+        id="Email"
+      />
+      <label for="Password">Password:</label>
+      <input
+        type="password"
+        name="Password"
+        placeholder="Enter password here"
+        id="Password"
+      />
+      <button onclick="login(event)" type="submit">Login</button>
+    </form>
+    <script>
+      function login(e) {
+        if (e) {
+          e.preventDefault();
+        }
+        let email = document.getElementById("Email").value;
+        let pass = document.getElementById("Password").value;
+        if (email.length != 0 && pass.length != 0) {
+          localStorage.setItem("islogged", "true");
+          window.location.href = "home.html";
+        } else {
+          alert("Enter correct Cendentials");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 25px;
+        width: 300px;
+      }
+      label {
+        margin-top: 10px;
+      }
+      button {
+        margin-top: 15px;
+        padding: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <!-- Changed heading to Register -->
+      <h1>Register</h1>
+
+      <label for="username">Name:</label>
+      <input id="username" type="text" required />
+
+      <!-- Fixed typo: requried -> required -->
+      <label for="phone">Phone:</label>
+      <input id="phone" type="number" required />
+
+      <label for="email">Email:</label>
+      <input id="email" type="email" required />
+
+      <label for="password">Password:</label>
+      <input id="password" type="password" required />
+
+      <label for="designation">Designation:</label>
+      <textarea id="designation" cols="15" rows="5"></textarea>
+
+      <label for="experience">Years of Experience:</label>
+      <input id="experience" type="number" required />
+
+      <label for="usertype">User Type:</label>
+      <select id="usertype">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+
+      <!-- Changed function call to register(event) and text to Register -->
+      <button onclick="register(event)">Register</button>
+    </form>
+
+    <script>
+      function register(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let password = document.getElementById("password").value;
+        let designation = document.getElementById("designation").value;
+        let experience = document.getElementById("experience").value;
+        let usertype = document.getElementById("usertype").value;
+
+        // Validation checks
+        if (phone.length != 10) {
+          alert("Phone number must be exactly 10 digits");
+          return;
+        }
+        if (password.length < 6 || password.length > 23) {
+          alert("Password must be between 6 and 23 characters");
+          return;
+        }
+
+        // Save user details to localStorage
+        localStorage.setItem("isRegistered", "true");
+        localStorage.setItem("registeredEmail", email);
+        localStorage.setItem("registeredPassword", password);
+
+        alert("Registration successful!");
+        // Redirect to login page so they can log in with their new credentials
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>
