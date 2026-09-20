@@ -1,0 +1,34 @@
+* { box-sizing: border-box; margin: 0; font-family: system-ui, sans-serif; }
+
+body { min-height: 100vh; padding: 30px; color: #fff;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e) fixed; }
+
+header { text-align: center; }
+h1 { font-size: 2.6rem; color: #e50914; }
+header p { opacity: .6; }
+
+.toolbar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 25px 0; }
+
+input, select, button, textarea { padding: 10px 14px; font-size: 1rem; color: #fff;
+  background: #ffffff1a; border: 1px solid #ffffff33; border-radius: 10px; }
+select option { color: #000; }
+button { cursor: pointer; transition: .2s; }
+button:hover { transform: scale(1.1); background: #ffffff33; }
+.primary { background: #e50914; border: none; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+
+.card { padding: 16px; text-align: center; border-radius: 16px; transition: .3s;
+  background: #ffffff1a; border: 1px solid #ffffff33; backdrop-filter: blur(10px); }
+.card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px #e5091466; }
+.card p { opacity: .7; margin: 6px 0 12px; }
+.card button { padding: 6px 10px; }
+
+.card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; margin-bottom: 10px; border-radius: 12px; }
+.card small { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  opacity: .6; margin-bottom: 12px; }
+
+dialog { margin: auto; padding: 25px; color: #fff; background: #1c1b3a;
+  border: 1px solid #ffffff33; border-radius: 16px; }
+dialog::backdrop { background: #000a; backdrop-filter: blur(4px); }
+dialog form { display: grid; gap: 12px; min-width: 280px; }

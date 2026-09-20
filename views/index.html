@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRUDflix</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🎬 CRUDflix</h1>
+    <p>Your movie collection, managed.</p>
+  </header>
+
+  <div class="toolbar">
+    <input id="search" placeholder="🔍 Search movies...">
+    <select id="genreFilter"></select>
+    <button id="addBtn" class="primary">+ Add Movie</button>
+  </div>
+
+  <main id="grid" class="grid"></main>
+
+  <dialog id="dialog">
+    <form id="movieForm" novalidate>
+      <h2 id="formTitle"></h2>
+      <input id="title" placeholder="Movie title">
+      <select id="genre"></select>
+      <input id="language" placeholder="Language (e.g. Hindi)">
+      <input id="releaseYear" type="number" placeholder="Release year">
+      <input id="rating" type="number" step="0.1" placeholder="Rating (0-10)">
+      <input id="duration" placeholder="Duration (e.g. 150 min)">
+      <textarea id="description" rows="3" placeholder="Short description"></textarea>
+      <input id="poster" placeholder="Poster image URL (optional)">
+      <button class="primary">Save</button>
+      <button type="button" id="cancelBtn">Cancel</button>
+    </form>
+  </dialog>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

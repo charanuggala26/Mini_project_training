@@ -1,0 +1,76 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "3 Idiots",
+            "genre": "Comedy",
+            "language": "Hindi",
+            "releaseYear": 2009,
+            "rating": 8.4,
+            "duration": "170 min",
+            "description": "Three engineering students experience friendship, pressure, failure, and the journey of finding their passion.",
+            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=3+Idiots",
+            "favorite": true
+        },
+        {
+            "id": 2,
+            "title": "Chhichhore",
+            "genre": "Drama",
+            "language": "Hindi",
+            "releaseYear": 2019,
+            "rating": 8.0,
+            "duration": "143 min",
+            "description": "A father remembers his college days and teaches his son an important lesson about failure and life.",
+            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Chhichhore",
+            "favorite": false
+        },
+        {
+            "id": 3,
+            "title": "Dangal",
+            "genre": "Drama",
+            "language": "Hindi",
+            "releaseYear": 2016,
+            "rating": 8.3,
+            "duration": "161 min",
+            "description": "A former wrestler trains his daughters to become successful wrestlers despite many challenges.",
+            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Dangal",
+            "favorite": false
+        },
+        {
+            "id": 4,
+            "title": "Taare Zameen Par",
+            "genre": "Drama",
+            "language": "Hindi",
+            "releaseYear": 2007,
+            "rating": 8.3,
+            "duration": "165 min",
+            "description": "An inspiring teacher helps a young student understand his abilities and overcome difficulties at school.",
+            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Taare+Zameen+Par",
+            "favorite": true
+        },
+        {
+            "id": 5,
+            "title": "Zindagi Na Milegi Dobara",
+            "genre": "Comedy",
+            "language": "Hindi",
+            "releaseYear": 2011,
+            "rating": 8.2,
+            "duration": "155 min",
+            "description": "Three friends go on a road trip through Spain and discover the importance of friendship and enjoying life.",
+            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=ZNMD",
+            "favorite": false
+        },
+        {
+            "id": 6,
+            "title": "Jawan",
+            "genre": "Action",
+            "language": "Hindi",
+            "releaseYear": 2023,
+            "rating": 7.0,
+            "duration": "169 min",
+            "description": "A man driven by a mission takes on a powerful system while fighting for justice.",
+            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Jawan",
+            "favorite": false
+        }
+    ]
+}
