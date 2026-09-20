@@ -1,7 +1,7 @@
 {
   "movies": [
     {
-      "id": 1,
+      "id": "1",
       "title": "3 Idiots",
       "genre": "Comedy",
       "language": "Hindi",
@@ -13,7 +13,7 @@
       "favorite": true
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Chhichhore",
       "genre": "Drama",
       "language": "Hindi",
@@ -25,7 +25,7 @@
       "favorite": false
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Dangal",
       "genre": "Drama",
       "language": "Hindi",
@@ -37,7 +37,7 @@
       "favorite": false
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Taare Zameen Par",
       "genre": "Drama",
       "language": "Hindi",
@@ -49,7 +49,7 @@
       "favorite": true
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Zindagi Na Milegi Dobara",
       "genre": "Comedy",
       "language": "Hindi",
@@ -61,7 +61,7 @@
       "favorite": false
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Jawan",
       "genre": "Action",
       "language": "Hindi",
@@ -77,12 +77,25 @@
       "genre": "Action",
       "language": "Telugu",
       "releaseYear": 2024,
-      "rating": 5,
+      "rating": 9.5,
       "duration": "120mins",
-      "description": "kmr[glgm\nARG;lm",
-      "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=OG",
+      "description": "The story follows Ojas Gambheera (played by Pawan Kalyan), a legendary mob boss and highly skilled martial artist. After living in exile and training in Japan for a decade, he returns to the gritty underworld of 1993 Mumbai. He resurfaces to protect his former mentor, defend his community, and wage a high-stakes war against Omi Bhau (Emraan Hashmi), a ruthless crime lord vying for dominance over the city's ports.",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7kMi0ozRZGZesMHfiu1Pf_LVP_8QlGS2wSuUeF43PYA&s=10",
       "favorite": false,
-      "id": 7
+      "id": "7"
+    },
+    {
+      "title": "Indra",
+      "genre": "Action",
+      "language": "Telugu",
+      "releaseYear": 2002,
+      "rating": 8.8,
+      "duration": "173 min",
+      "description": "The story follows Indrasena Reddy (played by Chiranjeevi), a noble man who tries to resolve a violent, generational water dispute between rival clans in the Rayalaseema region. After sacrificing his wealth and land for peace, he is forced into exile and lives as a humble taxi driver in Varanasi under an alias, until his past catches up with him and he must return to protect his people.",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkZqhVABVP-_61gyFUYNXMzturodDoMWpIMxEeo7pew&s=10",
+      "favorite": false,
+      "id": "9npjfOzEulI"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
