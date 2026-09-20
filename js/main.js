@@ -50,15 +50,18 @@ function filteredMovies() {
 
   const list = movies.filter((movie) =>
     movie.title.toLowerCase().includes(search) &&
-    (!genre || movie.genre === genre)
+    (!genre || movie.genre === genre) &&
+    (sort !== "favorites" || movie.favorite)
   );
 
   return list.sort((a, b) => {
     if (sort === "title") return a.title.localeCompare(b.title);
     if (sort === "rating") return b.rating - a.rating;
     if (sort === "oldest") return a.releaseYear - b.releaseYear;
+    if (sort === "favorites") return movies.filter(movie => movie.favorite)
     return b.releaseYear - a.releaseYear;
-  });
+    
+   });
 }
 
 function render() {

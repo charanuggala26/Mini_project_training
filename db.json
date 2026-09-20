@@ -10,7 +10,7 @@
       "duration": "170 min",
       "description": "Three engineering students experience friendship, pressure, failure, and the journey of finding their passion.",
       "poster": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "2",
@@ -46,7 +46,7 @@
       "duration": "165 min",
       "description": "An inspiring teacher helps a young student understand his abilities and overcome difficulties at school.",
       "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500&q=80",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "5",
@@ -81,7 +81,7 @@
       "duration": "120mins",
       "description": "The story follows Ojas Gambheera (played by Pawan Kalyan), a legendary mob boss and highly skilled martial artist. After living in exile and training in Japan for a decade, he returns to the gritty underworld of 1993 Mumbai. He resurfaces to protect his former mentor, defend his community, and wage a high-stakes war against Omi Bhau (Emraan Hashmi), a ruthless crime lord vying for dominance over the city's ports.",
       "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7kMi0ozRZGZesMHfiu1Pf_LVP_8QlGS2wSuUeF43PYA&s=10",
-      "favorite": false,
+      "favorite": true,
       "id": "7"
     },
     {
@@ -93,7 +93,7 @@
       "duration": "173 min",
       "description": "The story follows Indrasena Reddy (played by Chiranjeevi), a noble man who tries to resolve a violent, generational water dispute between rival clans in the Rayalaseema region. After sacrificing his wealth and land for peace, he is forced into exile and lives as a humble taxi driver in Varanasi under an alias, until his past catches up with him and he must return to protect his people.",
       "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkZqhVABVP-_61gyFUYNXMzturodDoMWpIMxEeo7pew&s=10",
-      "favorite": false,
+      "favorite": true,
       "id": "9npjfOzEulI"
     }
   ],

@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CRUDflix</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header class="hero">
@@ -18,7 +18,7 @@
         type="search"
         placeholder="Search movies..."
         aria-label="Search movies"
-    >
+      />
       <select id="genreFilter"></select>
       <select id="sortBy" aria-label="Sort movies">
         <option value="" selected disabled hidden value="">Sort By</option>
@@ -26,6 +26,7 @@
         <option value="oldest">Oldest first</option>
         <option value="rating">Highest rated</option>
         <option value="title">Title A-Z</option>
+        <option value="favorites">Favorites</option>
       </select>
       <button id="addBtn" class="primary">+ Add Movie</button>
     </div>
@@ -35,16 +36,16 @@
     <dialog id="dialog">
       <form id="movieForm" novalidate>
         <h2 id="formTitle"></h2>
-      <input id="title" placeholder="Movie title">
+        <input id="title" placeholder="Movie title" />
         <select id="genre"></select>
-      <input id="language" placeholder="Language (e.g. Hindi)">
-      <input id="releaseYear" type="number" placeholder="Release year">
+        <input id="language" placeholder="Language (e.g. Hindi)" />
+        <input id="releaseYear" type="number" placeholder="Release year" />
         <input
           id="rating"
           type="number"
           step="0.1"
           placeholder="Rating (0-10)"
-        >
+        />
         <input id="duration" placeholder="Duration (e.g. 150 min)" />
         <textarea
           id="description"
