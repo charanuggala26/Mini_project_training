@@ -5,17 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CRUDflix</title>
   <link rel="stylesheet" href="../css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>🎬 CRUDflix</h1>
-    <p>Your movie collection, managed.</p>
+  <header class="hero">
+    <div>
+      <h1><span>CRUD</span>flix</h1>
+    </div>
   </header>
 
   <div class="toolbar">
-    <input id="search" placeholder="🔍 Search movies...">
+    <input id="search" type="search" placeholder="Search movies..." aria-label="Search movies">
     <select id="genreFilter"></select>
+    <select id="sortBy" aria-label="Sort movies">
+      <option value="newest">Newest first</option>
+      <option value="oldest">Oldest first</option>
+      <option value="rating">Highest rated</option>
+      <option value="title">Title A-Z</option>
+    </select>
     <button id="addBtn" class="primary">+ Add Movie</button>
   </div>
 
@@ -32,8 +38,10 @@
       <input id="duration" placeholder="Duration (e.g. 150 min)">
       <textarea id="description" rows="3" placeholder="Short description"></textarea>
       <input id="poster" placeholder="Poster image URL (optional)">
-      <button class="primary">Save</button>
-      <button type="button" id="cancelBtn">Cancel</button>
+      <div class="form-actions">
+        <button class="primary">Save movie</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+      </div>
     </form>
   </dialog>
 

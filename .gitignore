@@ -1,0 +1,29 @@
+# =========================
+# CRUDflix - Git Ignore
+# =========================
+
+# Environment / secret files
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*.backup
+
+# Logs
+*.log
