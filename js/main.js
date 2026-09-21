@@ -58,7 +58,6 @@ function filteredMovies() {
     if (sort === "title") return a.title.localeCompare(b.title);
     if (sort === "rating") return b.rating - a.rating;
     if (sort === "oldest") return a.releaseYear - b.releaseYear;
-    if (sort === "favorites") return movies.filter(movie => movie.favorite)
     return b.releaseYear - a.releaseYear;
     
    });
