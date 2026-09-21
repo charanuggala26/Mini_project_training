@@ -185,3 +185,5 @@ $("movieForm").onsubmit = saveMovie;
 
 setGenres();
 loadMovies();
+
+

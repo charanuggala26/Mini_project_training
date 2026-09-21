@@ -9,7 +9,7 @@
       "rating": 8.4,
       "duration": "170 min",
       "description": "Three engineering students experience friendship, pressure, failure, and the journey of finding their passion.",
-      "poster": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/d/df/3_idiots_poster.jpg",
       "favorite": false
     },
     {
@@ -21,7 +21,7 @@
       "rating": 8,
       "duration": "143 min",
       "description": "A father remembers his college days and teaches his son an important lesson about failure and life.",
-      "poster": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/3/3d/Chhichhore_Poster.jpg",
       "favorite": false
     },
     {
@@ -33,7 +33,7 @@
       "rating": 8.3,
       "duration": "161 min",
       "description": "A former wrestler trains his daughters to become successful wrestlers despite many challenges.",
-      "poster": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/9/99/Dangal_Poster.jpg",
       "favorite": false
     },
     {
@@ -45,7 +45,7 @@
       "rating": 8.3,
       "duration": "165 min",
       "description": "An inspiring teacher helps a young student understand his abilities and overcome difficulties at school.",
-      "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500&q=80",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/b/b4/Taare_Zameen_Par_Like_Stars_on_Earth_poster.png",
       "favorite": false
     },
     {
@@ -57,7 +57,7 @@
       "rating": 8.2,
       "duration": "155 min",
       "description": "Three friends go on a road trip through Spain and discover the importance of friendship and enjoying life.",
-      "poster": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/1/17/Zindagi_Na_Milegi_Dobara.jpg",
       "favorite": false
     },
     {
@@ -69,7 +69,7 @@
       "rating": 7,
       "duration": "169 min",
       "description": "A man driven by a mission takes on a powerful system while fighting for justice.",
-      "poster": "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500&q=80",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/3/39/Jawan_film_poster.jpg",
       "favorite": false
     },
     {
@@ -80,7 +80,7 @@
       "rating": 9.5,
       "duration": "120mins",
       "description": "The story follows Ojas Gambheera (played by Pawan Kalyan), a legendary mob boss and highly skilled martial artist. After living in exile and training in Japan for a decade, he returns to the gritty underworld of 1993 Mumbai. He resurfaces to protect his former mentor, defend his community, and wage a high-stakes war against Omi Bhau (Emraan Hashmi), a ruthless crime lord vying for dominance over the city's ports.",
-      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7kMi0ozRZGZesMHfiu1Pf_LVP_8QlGS2wSuUeF43PYA&s=10",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/0/0c/OG_Poster.jpg",
       "favorite": true,
       "id": "7"
     },
@@ -95,6 +95,18 @@
       "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkZqhVABVP-_61gyFUYNXMzturodDoMWpIMxEeo7pew&s=10",
       "favorite": true,
       "id": "9npjfOzEulI"
+    },
+    {
+      "title": "Bussinessman",
+      "genre": "Action",
+      "language": "telugu",
+      "releaseYear": 2024,
+      "rating": 6.9,
+      "duration": "150",
+      "description": "",
+      "poster": "https://tse3.mm.bing.net/th/id/OIP.Ws0jajMZU5CdOh0jDEgBEQHaKf?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "favorite": false,
+      "id": "aG1wDxp"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
