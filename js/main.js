@@ -1,188 +1,531 @@
 import {
-  getMovies,
-  addMovie,
-  updateMovie,
-  deleteMovie
+    getMovies,
+    addMovie,
+    updateMovie,
+    deleteMovie
 } from "./service/movieService.js";
-import {
-  validateMovie,
-  handleValidationError
-} from "../exception/validationException.js";
 
-const genres = ["Action", "Comedy", "Drama", "Horror", "Romance", "Sci-Fi"];
-const fields = [
-  "title", "genre", "language", "releaseYear",
-  "rating", "duration", "description", "poster"
-];
+import { validateMovie } from "../exception/validationException.js";
+
+
+/* ---------- Helper ---------- */
+
 const $ = (id) => document.getElementById(id);
 
+
+/* ---------- Elements ---------- */
+
+const movieList = $("movieList");
+
+const searchInput = $("searchInput");
+const genreFilter = $("genreFilter");
+const ratingSort = $("ratingSort");
+
+const showFormBtn = $("showFormBtn");
+const movieForm = $("movieForm");
+const cancelEditBtn = $("cancelEditBtn");
+
+const formTitle = $("formTitle");
+const submitMovieBtn = $("submitMovieBtn");
+
+const movieModal = $("movieModal");
+const movieDetails = $("movieDetails");
+const closeModalBtn = $("closeModalBtn");
+
+const statusMessage = $("statusMessage");
+
+
+/* ---------- Form inputs ---------- */
+
+const titleInput = $("title");
+const genreInput = $("genre");
+const languageInput = $("language");
+const releaseYearInput = $("releaseYear");
+const ratingInput = $("rating");
+const durationInput = $("duration");
+const posterInput = $("poster");
+const descriptionInput = $("description");
+
+
+/* ---------- App data ---------- */
+
 let movies = [];
-let editId = null;
+let editingId = null;
 
-function safe(value = "") {
-  return String(value).replace(/[&<>"']/g, (character) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;",
-    '"': "&quot;", "'": "&#39;"
-  }[character]));
+
+/* ---------- Show message ---------- */
+
+function showMessage(message) {
+    statusMessage.textContent = message;
 }
 
-function showError(error) {
-  console.error(error);
-  $("grid").innerHTML =
-    "<p class='status error'>Could not connect to the movie server.</p>";
-}
 
-function setGenres() {
-  const options = genres.map((genre) =>
-    `<option value="${genre}">${genre}</option>`
-  ).join("");
-
-  $("genre").innerHTML =
-    `<option value="">Choose a genre</option>${options}`;
-  $("genreFilter").innerHTML =
-    `<option value="">All genres</option>${options}`;
-}
-
-function filteredMovies() {
-  const search = $("search").value.toLowerCase();
-  const genre = $("genreFilter").value;
-  const sort = $("sortBy").value;
-
-  const list = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(search) &&
-    (!genre || movie.genre === genre) &&
-    (sort !== "favorites" || movie.favorite)
-  );
-
-  return list.sort((a, b) => {
-    if (sort === "title") return a.title.localeCompare(b.title);
-    if (sort === "rating") return b.rating - a.rating;
-    if (sort === "oldest") return a.releaseYear - b.releaseYear;
-    return b.releaseYear - a.releaseYear;
-    
-   });
-}
-
-function render() {
-  $("grid").innerHTML = filteredMovies().map((movie) => `
-    <article class="card" data-id="${movie.id}">
-      <img src="${safe(movie.poster)}" alt="${safe(movie.title)}"
-        onerror="this.src='https://placehold.co/500x750/eaf2fb/315f9b?text=No+poster'">
-      <div class="card-content">
-        <h3>${safe(movie.title)}</h3>
-        <p class="muted">${safe(movie.genre)} ·
-          ${safe(movie.language)} · ${movie.releaseYear}</p>
-        <p class="rating">★ ${movie.rating}
-          <span>· ${safe(movie.duration)}</span></p>
-        <small>${safe(movie.description)}</small>
-      </div>
-      <button data-action="fav">${movie.favorite ? "❤️" : "🤍"}</button>
-      <button data-action="edit">Edit</button>
-      <button class="danger" data-action="delete">Delete</button>
-    </article>
-  `).join("") || "<p class='status'>No movies found.</p>";
-}
+/* ---------- Load movies ---------- */
 
 async function loadMovies() {
-  try {
-    movies = await getMovies();
-    render();
-  } catch (error) {
-    showError(error);
-  }
-}
 
-function openForm(movie) {
-  editId = movie ? movie.id : null;
-  $("formTitle").textContent = movie ? "Edit Movie" : "Add Movie";
+    try {
 
-  fields.forEach((field) => {
-    $(field).value = movie ? movie[field] : "";
-  });
-  $("dialog").showModal();
-}
+        movies = await getMovies();
 
-function openDetails(movie) {
-  $("detailsTitle").textContent = movie.title;
-  $("detailsContent").innerHTML = `
-    <img src="${safe(movie.poster)}" alt="${safe(movie.title)}">
-    <div>
-      <p>${safe(movie.genre)} · ${safe(movie.language)}</p>
-      <p>${movie.releaseYear} · ★ ${movie.rating} ·
-        ${safe(movie.duration)}</p>
-      <p>${safe(movie.description)}</p>
-    </div>
-  `;
-  $("detailsDialog").showModal();
-}
+        applyFilters();
 
-async function cardAction(event) {
-  const card = event.target.closest(".card");
-  if (!card) return;
+    } catch (error) {
 
-  const movie = movies.find((item) => item.id == card.dataset.id);
-  const button = event.target.closest("button");
+        showMessage(error.message);
 
-  if (!button) return openDetails(movie);
-
-  try {
-    const action = button.dataset.action;
-    if (action === "edit") return openForm(movie);
-    if (action === "fav") {
-      await updateMovie(movie.id, { ...movie, favorite: !movie.favorite });
     }
-    if (action === "delete" && confirm(`Delete "${movie.title}"?`)) {
-      await deleteMovie(movie.id);
-    }
-    await loadMovies();
-  } catch (error) {
-    showError(error);
-  }
 }
 
-async function saveMovie(event) {
-  event.preventDefault();
 
-  const movie = {};
-  fields.forEach((field) => {
-    movie[field] = $(field).value.trim();
-  });
-  movie.releaseYear = Number(movie.releaseYear);
-  movie.rating = Number(movie.rating);
+/* ---------- Display movies ---------- */
 
-  try {
-    validateMovie(movie);
-    if (!movie.poster) {
-      movie.poster =
-        `https://placehold.co/500x750/eaf2fb/315f9b?text=${movie.title}`;
+function displayMovies(list) {
+
+    movieList.innerHTML = "";
+
+    if (list.length === 0) {
+
+        movieList.innerHTML = `
+            <p class="empty-message">
+                No movies found.
+            </p>
+        `;
+
+        return;
     }
 
-    if (editId) {
-      const oldMovie = movies.find((item) => item.id == editId);
-      await updateMovie(editId, { ...oldMovie, ...movie });
-    } else {
-      await addMovie({ ...movie, favorite: false });
-    }
 
-    $("dialog").close();
-    await loadMovies();
-  } catch (error) {
-    error.name === "ValidationError"
-      ? handleValidationError(error)
-      : showError(error);
-  }
+    list.forEach((movie) => {
+
+        movieList.innerHTML += `
+            <div class="movie-card">
+
+                <img
+                    src="${movie.poster}"
+                    alt="${movie.title}"
+                    class="movie-poster"
+                >
+
+                <div class="movie-info">
+
+                    <h3>${movie.title}</h3>
+
+                    <p class="movie-genre">
+                        ${movie.genre} • ${movie.language}
+                    </p>
+
+                    <div class="movie-meta">
+
+                        <span>
+                            ⭐ ${movie.rating}
+                        </span>
+
+                        <span>
+                            ${movie.releaseYear}
+                        </span>
+
+                    </div>
+
+                    <div class="movie-actions">
+
+                        <button
+                            type="button"
+                            class="view-btn"
+                            data-id="${movie.id}">
+                            View
+                        </button>
+
+                        <button
+                            type="button"
+                            class="edit-btn"
+                            data-id="${movie.id}">
+                            Edit
+                        </button>
+
+                        <button
+                            type="button"
+                            class="delete-btn"
+                            data-id="${movie.id}">
+                            Delete
+                        </button>
+
+                        <button
+                            type="button"
+                            class="favorite-btn ${movie.favorite ? "active" : ""}"
+                            data-id="${movie.id}">
+                            ${movie.favorite ? "♥" : "♡"}
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    });
 }
 
-$("search").oninput = render;
-$("genreFilter").onchange = render;
-$("sortBy").onchange = render;
-$("addBtn").onclick = () => openForm();
-$("cancelBtn").onclick = () => $("dialog").close();
-$("closeDetailsBtn").onclick = () => $("detailsDialog").close();
-$("grid").onclick = cardAction;
-$("movieForm").onsubmit = saveMovie;
 
-setGenres();
+/* ---------- Search / Filter / Sort ---------- */
+
+function applyFilters() {
+
+    let result = [...movies];
+
+    const search = searchInput.value
+        .toLowerCase()
+        .trim();
+
+
+    /* Search */
+
+    if (search) {
+
+        result = result.filter((movie) =>
+            movie.title.toLowerCase().includes(search)
+        );
+
+    }
+
+
+    /* Genre */
+
+    if (genreFilter.value) {
+
+        result = result.filter((movie) =>
+            movie.genre === genreFilter.value
+        );
+
+    }
+
+
+    /* Rating */
+
+    if (ratingSort.value === "high") {
+
+        result.sort((a, b) => b.rating - a.rating);
+
+    }
+
+    if (ratingSort.value === "low") {
+
+        result.sort((a, b) => a.rating - b.rating);
+
+    }
+
+
+    displayMovies(result);
+}
+
+
+/* ---------- Get form data ---------- */
+
+function getFormData() {
+
+    return {
+        title: titleInput.value.trim(),
+        genre: genreInput.value,
+        language: languageInput.value.trim(),
+        releaseYear: Number(releaseYearInput.value),
+        rating: Number(ratingInput.value),
+        duration: durationInput.value.trim(),
+        poster: posterInput.value.trim(),
+        description: descriptionInput.value.trim()
+    };
+}
+
+
+/* ---------- Clear form ---------- */
+
+function clearForm() {
+
+    movieForm.reset();
+
+    editingId = null;
+
+    formTitle.textContent = "Add New Movie";
+    submitMovieBtn.textContent = "Add Movie";
+}
+
+
+/* ---------- Show form ---------- */
+
+showFormBtn.addEventListener("click", () => {
+
+    movieForm.style.display = "block";
+
+});
+
+
+/* ---------- Cancel form ---------- */
+
+cancelEditBtn.addEventListener("click", () => {
+
+    movieForm.style.display = "none";
+
+    clearForm();
+
+    showMessage("");
+
+});
+
+
+/* ---------- Add / Update movie ---------- */
+
+movieForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+
+    const movieData = getFormData();
+
+    const validationError = validateMovie(movieData);
+
+
+    if (validationError) {
+
+        showMessage(validationError);
+
+        return;
+    }
+
+
+    try {
+
+        /* Edit */
+
+        if (editingId !== null) {
+
+            const oldMovie = movies.find(
+                (movie) => movie.id === editingId
+            );
+
+            await updateMovie(editingId, {
+                ...movieData,
+                id: editingId,
+                favorite: oldMovie.favorite
+            });
+
+            showMessage("Movie updated successfully.");
+
+        }
+
+
+        /* Add */
+
+        else {
+
+            await addMovie({
+                ...movieData,
+                favorite: false
+            });
+
+            showMessage("Movie added successfully.");
+
+        }
+
+
+        movieForm.style.display = "none";
+
+        clearForm();
+
+        await loadMovies();
+
+    } catch (error) {
+
+        showMessage(error.message);
+
+    }
+
+});
+
+
+/* ---------- Movie buttons ---------- */
+
+movieList.addEventListener("click", async (event) => {
+
+    const button = event.target.closest("button");
+
+    if (!button) {
+        return;
+    }
+
+
+    const id = Number(button.dataset.id);
+
+    const movie = movies.find(
+        (movie) => movie.id === id
+    );
+
+    if (!movie) {
+        return;
+    }
+
+
+    /* View */
+
+    if (button.classList.contains("view-btn")) {
+
+        movieDetails.innerHTML = `
+
+            <div class="movie-details">
+
+                <img
+                    src="${movie.poster}"
+                    alt="${movie.title}"
+                >
+
+                <div class="movie-details-info">
+
+                    <h2>${movie.title}</h2>
+
+                    <p>Genre: ${movie.genre}</p>
+                    <p>Language: ${movie.language}</p>
+                    <p>Year: ${movie.releaseYear}</p>
+                    <p>Rating: ⭐ ${movie.rating}</p>
+                    <p>Duration: ${movie.duration}</p>
+
+                    <p>${movie.description}</p>
+
+                </div>
+
+            </div>
+        `;
+
+        movieModal.style.display = "flex";
+
+        return;
+    }
+
+
+    /* Edit */
+
+    if (button.classList.contains("edit-btn")) {
+
+        editingId = id;
+
+        titleInput.value = movie.title;
+        genreInput.value = movie.genre;
+        languageInput.value = movie.language;
+        releaseYearInput.value = movie.releaseYear;
+        ratingInput.value = movie.rating;
+        durationInput.value = movie.duration;
+        posterInput.value = movie.poster;
+        descriptionInput.value = movie.description;
+
+        formTitle.textContent = "Edit Movie";
+        submitMovieBtn.textContent = "Update Movie";
+
+        movieForm.style.display = "block";
+
+        movieForm.scrollIntoView({
+            behavior: "smooth"
+        });
+
+        return;
+    }
+
+
+    /* Delete */
+
+    if (button.classList.contains("delete-btn")) {
+
+        const confirmed = confirm(
+            `Delete "${movie.title}"?`
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        try {
+
+            await deleteMovie(id);
+
+            showMessage("Movie deleted successfully.");
+
+            await loadMovies();
+
+        } catch (error) {
+
+            showMessage(error.message);
+
+        }
+
+        return;
+    }
+
+
+    /* Favourite */
+
+    if (button.classList.contains("favorite-btn")) {
+
+        try {
+
+            await updateMovie(id, {
+                ...movie,
+                favorite: !movie.favorite
+            });
+
+            await loadMovies();
+
+        } catch (error) {
+
+            showMessage(error.message);
+
+        }
+
+    }
+
+});
+
+
+/* ---------- Close modal ---------- */
+
+closeModalBtn.addEventListener("click", () => {
+
+    movieModal.style.display = "none";
+
+});
+
+
+movieModal.addEventListener("click", (event) => {
+
+    if (event.target === movieModal) {
+
+        movieModal.style.display = "none";
+
+    }
+
+});
+
+
+/* ---------- Search ---------- */
+
+searchInput.addEventListener(
+    "input",
+    applyFilters
+);
+
+
+/* ---------- Genre filter ---------- */
+
+genreFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+/* ---------- Rating sort ---------- */
+
+ratingSort.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+/* ---------- Start ---------- */
+
 loadMovies();
-
-
