@@ -1,266 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CRUDflix</title>
-
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body>
-
-    <!-- Navbar -->
-    <header class="navbar">
-
-        <div class="logo">
-            🎬 CRUDflix
-        </div>
-
-        <nav class="nav-links">
-            <a href="#movies">Movies</a>
-            <a href="#manage">Manage Movies</a>
-        </nav>
-
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>CRUDflix</h1>
+      <p>Keep your favourite movies in one place.</p>
     </header>
 
-
-    <main>
-
-        <!-- Hero -->
-        <section class="hero">
-
-            <div class="hero-content">
-                <h1>Find Your Next Favorite Movie</h1>
-
-                <p>
-                    Discover movies, explore genres, and manage your collection.
-                </p>
-            </div>
-
-        </section>
-
-
-        <!-- Search and Filters -->
-        <section class="movie-controls">
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search movies..."
-            >
-
-            <select id="genreFilter">
-
-                <option value="">All Genres</option>
-                <option value="Action">Action</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Drama">Drama</option>
-                <option value="Romance">Romance</option>
-                <option value="Thriller">Thriller</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-
-            </select>
-
-
-            <select id="ratingSort">
-
-                <option value="">Sort by Rating</option>
-                <option value="high">Highest Rating</option>
-                <option value="low">Lowest Rating</option>
-
-            </select>
-
-        </section>
-
-
-        <!-- Message -->
-        <div id="statusMessage" class="status-message"></div>
-
-
-        <!-- Movies -->
-        <section id="movies" class="movies-section">
-
-            <div class="section-header">
-                <h2>Explore Movies</h2>
-            </div>
-
-            <div id="movieList" class="movie-grid"></div>
-
-        </section>
-
-
-        <!-- Manage Movies -->
-        <section id="manage" class="manage-section">
-
-            <div class="section-header">
-
-                <h2>Manage Movies</h2>
-
-                <button id="showFormBtn">
-                    + Add Movie
-                </button>
-
-            </div>
-
-
-            <!-- Movie Form -->
-            <form id="movieForm" class="movie-form">
-
-                <h3 id="formTitle">
-                    Add New Movie
-                </h3>
-
-
-                <input
-                    type="text"
-                    id="title"
-                    placeholder="Movie Title"
-                    required
-                >
-
-
-                <select id="genre" required>
-
-                    <option value="">
-                        Select Genre
-                    </option>
-
-                    <option value="Action">
-                        Action
-                    </option>
-
-                    <option value="Comedy">
-                        Comedy
-                    </option>
-
-                    <option value="Drama">
-                        Drama
-                    </option>
-
-                    <option value="Romance">
-                        Romance
-                    </option>
-
-                    <option value="Thriller">
-                        Thriller
-                    </option>
-
-                    <option value="Sci-Fi">
-                        Sci-Fi
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    id="language"
-                    placeholder="Language"
-                    required
-                >
-
-
-                <input
-                    type="number"
-                    id="releaseYear"
-                    placeholder="Release Year"
-                    min="1900"
-                    max="2100"
-                    required
-                >
-
-
-                <input
-                    type="number"
-                    id="rating"
-                    placeholder="Rating (0 - 10)"
-                    min="0"
-                    max="10"
-                    step="0.1"
-                    required
-                >
-
-
-                <input
-                    type="text"
-                    id="duration"
-                    placeholder="Duration (e.g. 150 min)"
-                    required
-                >
-
-
-                <input
-                    type="url"
-                    id="poster"
-                    placeholder="Poster URL"
-                    required
-                >
-
-
-                <textarea
-                    id="description"
-                    placeholder="Movie Description"
-                    required
-                ></textarea>
-
-
-                <div class="form-actions">
-
-                    <button
-                        type="submit"
-                        id="submitMovieBtn"
-                    >
-                        Add Movie
-                    </button>
-
-
-                    <button
-                        type="button"
-                        id="cancelEditBtn"
-                    >
-                        Cancel
-                    </button>
-
-                </div>
-
-            </form>
-
-        </section>
-
-    </main>
-
-
-    <!-- Movie Details Modal -->
-    <div id="movieModal" class="modal">
-
-        <div class="modal-content">
-
-            <button
-                id="closeModalBtn"
-                class="close-btn"
-            >
-                ×
-            </button>
-
-            <div id="movieDetails"></div>
-
-        </div>
-
+    <div class="toolbar">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search movies..."
+        aria-label="Search movies"
+      />
+      <select id="genreFilter"></select>
+      <select id="sortBy" aria-label="Sort movies">
+        <option value="" selected disabled hidden value="">Sort By</option>
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+        <option value="rating">Highest rated</option>
+        <option value="title">Title A-Z</option>
+        <option value="favorites">Favorites</option>
+      </select>
+      <button id="addBtn" class="primary">+ Add Movie</button>
     </div>
 
+    <main id="grid" class="grid"></main>
 
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <dialog id="dialog">
+      <form id="movieForm" novalidate>
+        <h2 id="formTitle"></h2>
+        <input id="title" placeholder="Movie title" />
+        <select id="genre"></select>
+        <input id="language" placeholder="Language (e.g. Hindi)" />
+        <input id="releaseYear" type="number" placeholder="Release year" />
+        <input
+          id="rating"
+          type="number"
+          step="0.1"
+          placeholder="Rating (0-10)"
+        />
+        <input id="duration" placeholder="Duration (e.g. 150 min)" />
+        <textarea
+          id="description"
+          rows="3"
+          placeholder="Short description"
+        ></textarea>
+        <input id="poster" placeholder="Poster image URL (optional)" />
+        <div class="form-actions">
+          <button class="primary">Save movie</button>
+          <button type="button" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </dialog>
 
-    <!-- Main JavaScript -->
-    <script
-        type="module"
-        src="../js/main.js"
-    ></script>
+    <dialog id="detailsDialog">
+      <h2 id="detailsTitle"></h2>
+      <div id="detailsContent" class="details-content"></div>
+      <button id="closeDetailsBtn">Close</button>
+    </dialog>
 
-</body>
-
+    <script type="module" src="../js/main.js"></script>
+  </body>
 </html>

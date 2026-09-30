@@ -1,252 +1,232 @@
-/* ===== Base ===== */
+:root {
+  --blue: #315f9b;
+  --light-blue: #eaf2fb;
+  --text: #263238;
+  --muted: #687780;
+  --border: #d5e0e8;
+  --danger: #b33a3a;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: #fff;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 18px;
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  background: #f7f9fb;
 }
 
-button,
+.hero {
+  padding: 24px;
+  text-align: center;
+  background: white;
+  border-bottom: 4px solid var(--blue);
+}
+
+h1 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
 input,
 select,
+button,
 textarea {
-    font: inherit;
+  padding: 10px 12px;
+  color: var(--text);
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: white;
 }
 
-
-/* ===== Navbar ===== */
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 18px 6%;
-
-    border-bottom: 1px solid #222;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #9dbce0;
 }
 
-.logo {
-    color: #e50914;
-    font-size: 24px;
-    font-weight: bold;
+#search {
+  flex: 1 1 240px;
 }
 
-#showFormBtn,
-#submitMovieBtn {
-    background: #e50914;
-    color: white;
-    border: 0;
-    padding: 9px 14px;
-    border-radius: 5px;
-    cursor: pointer;
+select {
+  min-width: 140px;
 }
 
-
-/* ===== Controls ===== */
-
-.movie-controls {
-    display: flex;
-    gap: 10px;
-    padding: 25px 6%;
+button {
+  cursor: pointer;
 }
 
-.movie-controls input,
-.movie-controls select,
-.movie-form input,
-.movie-form select,
-.movie-form textarea {
-    background: #181818;
-    color: white;
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 10px;
+button:hover {
+  background: var(--light-blue);
 }
 
-.movie-controls input {
-    flex: 1;
+.primary {
+  color: white;
+  background: var(--blue);
+  border-color: var(--blue);
 }
 
-
-/* ===== Movies ===== */
-
-.movies-section {
-    padding: 10px 6% 50px;
+.primary:hover {
+  background: #264d82;
 }
 
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 18px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 18px;
 }
 
-.movie-card {
-    background: #181818;
-    border-radius: 7px;
-    overflow: hidden;
+.card {
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.movie-poster {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
+.card:hover {
+  transform: translateY(-3px);
 }
 
-.movie-info {
-    padding: 12px;
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--light-blue);
 }
 
-.movie-info h3 {
-    font-size: 17px;
-    margin-bottom: 4px;
+.card-content {
+  padding: 14px 14px 4px;
 }
 
-.movie-genre {
-    color: #888;
-    font-size: 13px;
+.card h3 {
+  margin: 0 0 7px;
 }
 
-.movie-meta {
-    display: flex;
-    justify-content: space-between;
-    color: #ccc;
-    margin: 8px 0;
-    font-size: 13px;
+.card p {
+  margin: 5px 0;
+  font-size: 0.88rem;
 }
 
-.movie-actions {
-    display: flex;
-    gap: 5px;
+.muted,
+.card small {
+  color: var(--muted);
 }
 
-.movie-actions button {
-    flex: 1;
-    border: 0;
-    padding: 7px 4px;
-    border-radius: 4px;
-    background: #292929;
-    color: white;
-    cursor: pointer;
+.rating {
+  color: #c47b00;
+  font-weight: bold;
 }
 
-.delete-btn {
-    background: #75151b !important;
+.rating span {
+  color: var(--muted);
+  font-weight: normal;
 }
 
-.favorite-btn.active {
-    color: #e50914;
+.card small {
+  display: block;
+  min-height: 42px;
+  margin: 10px 0 12px;
+  line-height: 1.4;
 }
 
-
-/* ===== Form ===== */
-
-.movie-form {
-    display: none;
-    max-width: 600px;
-    margin: 10px 6% 30px;
-    padding: 18px;
-    background: #151515;
-    border-radius: 7px;
+.card > button {
+  margin: 0 0 14px 10px;
+  padding: 6px 9px;
 }
 
-.movie-form input,
-.movie-form select,
-.movie-form textarea {
-    width: 100%;
-    margin-bottom: 10px;
+.danger,
+.error {
+  color: var(--danger);
 }
 
-.movie-form textarea {
-    height: 90px;
-    resize: vertical;
+.status {
+  grid-column: 1 / -1;
+  padding: 30px;
+  color: var(--muted);
+  text-align: center;
+}
+
+dialog {
+  width: min(94vw, 460px);
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+dialog::backdrop {
+  background: #26323866;
+}
+
+dialog form {
+  display: grid;
+  gap: 10px;
+}
+
+dialog input,
+dialog select,
+dialog textarea {
+  width: 100%;
 }
 
 .form-actions {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 10px;
 }
 
-#cancelEditBtn {
-    background: #333;
-    color: white;
-    border: 0;
-    padding: 9px 14px;
-    border-radius: 5px;
+.form-actions button {
+  flex: 1;
 }
 
-
-/* ===== Modal ===== */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: #000b;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.details-content {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
 }
 
-.modal-content {
-    position: relative;
-    max-width: 650px;
-    background: #181818;
-    padding: 20px;
-    border-radius: 7px;
+.details-content img {
+  width: 150px;
+  border-radius: 6px;
 }
 
-.close-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    border: 0;
-    background: #333;
-    color: white;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
+#detailsDialog {
+  max-width: 600px;
 }
-
-.movie-details {
-    display: flex;
-    gap: 18px;
-}
-
-.movie-details img {
-    width: 180px;
-    object-fit: cover;
-}
-
-.movie-details-info {
-    flex: 1;
-}
-
-.movie-details-info p {
-    color: #bbb;
-    margin-top: 6px;
-}
-
-
-/* ===== Mobile ===== */
 
 @media (max-width: 600px) {
+  body {
+    padding: 16px 10px;
+  }
 
-    .movie-controls {
-        flex-direction: column;
-    }
+  .details-content {
+    grid-template-columns: 1fr;
+  }
 
-    .movie-details {
-        flex-direction: column;
-    }
-
-    .movie-details img {
-        width: 180px;
-    }
-
+  .details-content img {
+    width: 100%;
+    max-width: 220px;
+  }
 }

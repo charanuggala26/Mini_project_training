@@ -1,76 +1,113 @@
 {
-    "movies": [
-        {
-            "id": 1,
-            "title": "3 Idiots",
-            "genre": "Comedy",
-            "language": "Hindi",
-            "releaseYear": 2009,
-            "rating": 8.4,
-            "duration": "170 min",
-            "description": "Three engineering students experience friendship, pressure, failure, and the journey of finding their passion.",
-            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=3+Idiots",
-            "favorite": true
-        },
-        {
-            "id": 2,
-            "title": "Chhichhore",
-            "genre": "Drama",
-            "language": "Hindi",
-            "releaseYear": 2019,
-            "rating": 8.0,
-            "duration": "143 min",
-            "description": "A father remembers his college days and teaches his son an important lesson about failure and life.",
-            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Chhichhore",
-            "favorite": false
-        },
-        {
-            "id": 3,
-            "title": "Dangal",
-            "genre": "Drama",
-            "language": "Hindi",
-            "releaseYear": 2016,
-            "rating": 8.3,
-            "duration": "161 min",
-            "description": "A former wrestler trains his daughters to become successful wrestlers despite many challenges.",
-            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Dangal",
-            "favorite": false
-        },
-        {
-            "id": 4,
-            "title": "Taare Zameen Par",
-            "genre": "Drama",
-            "language": "Hindi",
-            "releaseYear": 2007,
-            "rating": 8.3,
-            "duration": "165 min",
-            "description": "An inspiring teacher helps a young student understand his abilities and overcome difficulties at school.",
-            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Taare+Zameen+Par",
-            "favorite": true
-        },
-        {
-            "id": 5,
-            "title": "Zindagi Na Milegi Dobara",
-            "genre": "Comedy",
-            "language": "Hindi",
-            "releaseYear": 2011,
-            "rating": 8.2,
-            "duration": "155 min",
-            "description": "Three friends go on a road trip through Spain and discover the importance of friendship and enjoying life.",
-            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=ZNMD",
-            "favorite": false
-        },
-        {
-            "id": 6,
-            "title": "Jawan",
-            "genre": "Action",
-            "language": "Hindi",
-            "releaseYear": 2023,
-            "rating": 7.0,
-            "duration": "169 min",
-            "description": "A man driven by a mission takes on a powerful system while fighting for justice.",
-            "poster": "https://placehold.co/500x750/1b1b1b/ffffff?text=Jawan",
-            "favorite": false
-        }
-    ]
+  "movies": [
+    {
+      "id": "1",
+      "title": "3 Idiots",
+      "genre": "Comedy",
+      "language": "Hindi",
+      "releaseYear": 2009,
+      "rating": 8.4,
+      "duration": "170 min",
+      "description": "Three engineering students experience friendship, pressure, failure, and the journey of finding their passion.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/d/df/3_idiots_poster.jpg",
+      "favorite": false
+    },
+    {
+      "id": "2",
+      "title": "Chhichhore",
+      "genre": "Drama",
+      "language": "Hindi",
+      "releaseYear": 2019,
+      "rating": 8,
+      "duration": "143 min",
+      "description": "A father remembers his college days and teaches his son an important lesson about failure and life.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/3/3d/Chhichhore_Poster.jpg",
+      "favorite": false
+    },
+    {
+      "id": "3",
+      "title": "Dangal",
+      "genre": "Drama",
+      "language": "Hindi",
+      "releaseYear": 2016,
+      "rating": 8.3,
+      "duration": "161 min",
+      "description": "A former wrestler trains his daughters to become successful wrestlers despite many challenges.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/9/99/Dangal_Poster.jpg",
+      "favorite": false
+    },
+    {
+      "id": "4",
+      "title": "Taare Zameen Par",
+      "genre": "Drama",
+      "language": "Hindi",
+      "releaseYear": 2007,
+      "rating": 8.3,
+      "duration": "165 min",
+      "description": "An inspiring teacher helps a young student understand his abilities and overcome difficulties at school.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/b/b4/Taare_Zameen_Par_Like_Stars_on_Earth_poster.png",
+      "favorite": false
+    },
+    {
+      "id": "5",
+      "title": "Zindagi Na Milegi Dobara",
+      "genre": "Comedy",
+      "language": "Hindi",
+      "releaseYear": 2011,
+      "rating": 8.2,
+      "duration": "155 min",
+      "description": "Three friends go on a road trip through Spain and discover the importance of friendship and enjoying life.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/1/17/Zindagi_Na_Milegi_Dobara.jpg",
+      "favorite": false
+    },
+    {
+      "id": "6",
+      "title": "Jawan",
+      "genre": "Action",
+      "language": "Hindi",
+      "releaseYear": 2023,
+      "rating": 7,
+      "duration": "169 min",
+      "description": "A man driven by a mission takes on a powerful system while fighting for justice.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/3/39/Jawan_film_poster.jpg",
+      "favorite": false
+    },
+    {
+      "title": "OG",
+      "genre": "Action",
+      "language": "Telugu",
+      "releaseYear": 2024,
+      "rating": 9.5,
+      "duration": "120mins",
+      "description": "The story follows Ojas Gambheera (played by Pawan Kalyan), a legendary mob boss and highly skilled martial artist. After living in exile and training in Japan for a decade, he returns to the gritty underworld of 1993 Mumbai. He resurfaces to protect his former mentor, defend his community, and wage a high-stakes war against Omi Bhau (Emraan Hashmi), a ruthless crime lord vying for dominance over the city's ports.",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/0/0c/OG_Poster.jpg",
+      "favorite": true,
+      "id": "7"
+    },
+    {
+      "title": "Indra",
+      "genre": "Action",
+      "language": "Telugu",
+      "releaseYear": 2002,
+      "rating": 8.8,
+      "duration": "173 min",
+      "description": "The story follows Indrasena Reddy (played by Chiranjeevi), a noble man who tries to resolve a violent, generational water dispute between rival clans in the Rayalaseema region. After sacrificing his wealth and land for peace, he is forced into exile and lives as a humble taxi driver in Varanasi under an alias, until his past catches up with him and he must return to protect his people.",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkZqhVABVP-_61gyFUYNXMzturodDoMWpIMxEeo7pew&s=10",
+      "favorite": true,
+      "id": "9npjfOzEulI"
+    },
+    {
+      "title": "Businessman",
+      "genre": "Action",
+      "language": "telugu",
+      "releaseYear": 2024,
+      "rating": 6.9,
+      "duration": "150",
+      "description": "",
+      "poster": "https://tse3.mm.bing.net/th/id/OIP.Ws0jajMZU5CdOh0jDEgBEQHaKf?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "favorite": false,
+      "id": "aG1wDxp"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
